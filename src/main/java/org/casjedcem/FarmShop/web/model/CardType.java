@@ -1,4 +1,4 @@
-package org.casjedcem.FarmShop.model;
+package org.casjedcem.FarmShop.web.model;
 public enum CardType {
 
 	/**

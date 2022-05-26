@@ -1,4 +1,4 @@
-package org.casjedcem.FarmShop.model;
+package org.casjedcem.FarmShop.web.model;
 
 
 
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Set;
 
 

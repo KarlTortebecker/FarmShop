@@ -1,10 +1,9 @@
-package org.casjedcem.FarmShop.model;
+package org.casjedcem.FarmShop.web.model;
 
 
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.util.StringUtils;
 

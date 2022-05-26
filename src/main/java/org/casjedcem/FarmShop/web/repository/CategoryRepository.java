@@ -3,9 +3,9 @@
  * licebce MIT
  */
 
-package org.casjedcem.FarmShop.repository;
+package org.casjedcem.FarmShop.web.repository;
 
-import org.casjedcem.FarmShop.model.Category;
+import org.casjedcem.FarmShop.web.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;

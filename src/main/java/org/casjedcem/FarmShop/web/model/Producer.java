@@ -1,12 +1,9 @@
-package org.casjedcem.FarmShop.model;
+package org.casjedcem.FarmShop.web.model;
 
 
-import java.io.Serializable;
-import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 

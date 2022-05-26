@@ -3,12 +3,12 @@
  * licebce MIT
  */
 
-package org.casjedcem.FarmShop.repository;
+package org.casjedcem.FarmShop.web.repository;
 
 
-import org.casjedcem.FarmShop.model.Category;
-import org.casjedcem.FarmShop.model.Product;
-import org.casjedcem.FarmShop.model.Producer;
+import org.casjedcem.FarmShop.web.model.Category;
+import org.casjedcem.FarmShop.web.model.Product;
+import org.casjedcem.FarmShop.web.model.Producer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

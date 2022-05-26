@@ -1,4 +1,4 @@
-package org.casjedcem.FarmShop.model;
+package org.casjedcem.FarmShop.web.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +19,6 @@ import java.util.List;
     @Data
     @Entity
     @Table(name="products")
-    @NoArgsConstructor
     @AllArgsConstructor
     @ToString
     public class Product implements Serializable {
