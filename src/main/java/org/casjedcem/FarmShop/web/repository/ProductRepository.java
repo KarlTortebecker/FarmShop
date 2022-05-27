@@ -32,4 +32,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     public List<Product> findByAvailableIsTrue();
 
+    List<Product> findByNameContainingIgnoreCase(String name);
+
 }

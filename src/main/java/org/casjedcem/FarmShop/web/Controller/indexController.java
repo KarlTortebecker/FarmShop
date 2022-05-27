@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class indexController {
-    @GetMapping("/index.html")
+    @GetMapping("/")
     public String home(@RequestParam(required=false, defaultValue="Not identified") String name, ModelMap modelmap, Model model) {
         model.addAttribute("username", name);
         modelmap.put("name", name);

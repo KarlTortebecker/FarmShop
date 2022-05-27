@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2022.
- * licebce MIT
- */
 
 package org.casjedcem.FarmShop.web.repository;
 
@@ -15,5 +11,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
 
-
+    boolean findByName(String name);
 }

@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 
-    @Data
+@Data
     @MappedSuperclass
     public class User {
 
@@ -18,6 +19,7 @@ import javax.persistence.*;
         @Column(unique = true, nullable = false)
         private String userName;
 
+        @Email
         @Column(nullable = false, unique = true, length = 50)
         private String userEmail;
 
