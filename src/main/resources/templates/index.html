@@ -40,7 +40,7 @@
 <body class="animsition">
 	
 	<!-- Header -->
-	<header>
+	<header th:fragment="header">
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -62,16 +62,13 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							EN
 						</a>
+						<a href="#" class="flex-c-m trans-04 p-lr-25">
+							USD
+						</a>
 
-						<li class="active-menu">
-							<a href="#" class="flex-c-m trans-04 p-lr-25">USD</a>
-							<ul class="sub-menu">
-								<li><a href="index.html">Homepage 1</a></li>
-								<li><a href="home-02.html">Homepage 2</a></li>
-								<li><a href="home-03.html">Homepage 3</a></li>
-							</ul>
-						</li>
-
+						<li class="nav-item"><a class="nav-link fl2" th:href="@{/register}"> <i
+								class="fa fa-user"  style="color: #17a2b8; font-size: 20px"></i>
+						</a></li>
 					</div>
 				</div>
 			</div>
@@ -179,10 +176,6 @@
 				<li>
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							My Account
 						</a>
 
@@ -192,6 +185,9 @@
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							USD
+						</a>
+						<a href="#" class="flex-c-m p-lr-10 trans-04">
+							Sign In / Register
 						</a>
 					</div>
 				</li>

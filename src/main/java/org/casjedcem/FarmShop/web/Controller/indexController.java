@@ -15,4 +15,9 @@ public class indexController {
         System.out.print("\n \n "+name);
         return "index";
     }
+
+    @GetMapping("/register")
+    public String register(){
+        return "registration/register";
+    }
 }

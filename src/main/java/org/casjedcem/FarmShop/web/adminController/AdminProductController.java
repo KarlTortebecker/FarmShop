@@ -32,6 +32,9 @@ public class AdminProductController {
 		model.addAttribute("products", products);
 		return "Admin/index";
 	}
+
+
+
     @GetMapping("/Admin/product")
     public String showAddProduct(Model model)
     {
