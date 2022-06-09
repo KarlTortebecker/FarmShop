@@ -23,8 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
     public List<Product> findAllByCategory(Category category);
-    public List<Product> findAllByCategoryAndNameLike(Category category, String name);
-    public List<Product> findByNameContains(@Param("name") String name);
+    public List<Product> findAllByCategoryAndProductNameLike(Category category, String name);
+    public List<Product> findByProductNameContains(@Param("name") String name);
     public List<Product> findByProducerAndCategory(Producer producer, Category category);
     public List<Product> findByProducerAndAvailableIsTrue(Producer v);
     public List<Product> findByProducerAndPromotionIsTrue(Producer v);
@@ -32,6 +32,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     public List<Product> findByAvailableIsTrue();
 
-    List<Product> findByNameContainingIgnoreCase(String name);
+    List<Product> findByProductNameContainingIgnoreCase(String name);
 
 }

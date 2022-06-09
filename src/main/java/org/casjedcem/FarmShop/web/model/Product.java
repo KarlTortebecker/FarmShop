@@ -1,6 +1,7 @@
 package org.casjedcem.FarmShop.web.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -22,22 +23,26 @@ public class Product implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_product;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+    @Column(unique = true, nullable = false, name="productName")
+    private String productName;
 
-    @Column(columnDefinition = "CLOB NOT NULL")
+
+    @Column(columnDefinition = "varchar(255) default 'Not described'", updatable = true, nullable = false)
     private String description;
 
+    @Column(name = "currentPrice")
     private double currentPrice;
 
+    @Column(name = "promotion")
     private boolean promotion;
 
+    @Column(name = "available")
     private boolean available;
 
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
-    private String image;
+    @NotNull
+    private String URLimage;
 
+    @Column(name = "quantity")
     private int quantity;
 
     @ManyToOne
@@ -49,14 +54,13 @@ public class Product implements Serializable {
 
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Coupon discount;
+    private Coupon discounts;
 
 
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name="product_id")
     private Set<Carousel> carousel;
-
 
     public int getQuantity() {
         return quantity;
@@ -65,17 +69,17 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
     public Coupon getDiscount() {
-        return discount;
+        return discounts;
     }
     public void setDiscount(Coupon discount) {
-        this.discount = discount;
+        this.discounts = discount;
     }
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id_product == null) ? 0 : id_product.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((productName == null) ? 0 : productName.hashCode());
         return result;
     }
     @Override
@@ -92,10 +96,10 @@ public class Product implements Serializable {
                 return false;
         } else if (!id_product.equals(other.id_product))
             return false;
-        if (name == null) {
-            if (other.name != null)
+        if (productName == null) {
+            if (other.productName != null)
                 return false;
-        } else if (!name.equals(other.name))
+        } else if (!productName.equals(other.productName))
             return false;
         return true;
     }

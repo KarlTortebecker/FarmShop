@@ -41,14 +41,10 @@ public class ProductService {
 		{
 			System.out.println("not a valid file");
 		}
-		try {
-			p.setImage(resizeImageForUse(Base64.getEncoder().encodeToString(file.getBytes()),400,400));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		p.setURLimage(file.getResource().toString());
 		p.setDescription(description);
 		
-        p.setName(name);
+        p.setProductName(name);
         p.setCurrentPrice(currentPrice);
         p.setQuantity(quantity);
         Coupon c = new Coupon();
@@ -69,7 +65,7 @@ public class ProductService {
     {
     	Product p = new Product();
     	p = productRepo.findById(id).get();
-    	p.setName(name);
+    	p.setProductName(name);
     	productRepo.save(p);    
     }
     public void changeProductDescription(Long id , String description)
@@ -198,10 +194,10 @@ public class ProductService {
 		
 		return productRepo.findById(id).get();
 	}
-	public List<Product> searchProductByNameLike(String value) {
+	/*public List<Product> searchProductByNameLike(String value) {
 		
 		return productRepo.findByNameContainingIgnoreCase(value);
-	}
+	}*/
 	
 
 	/*public Product getProductWithBigestDiscount() {

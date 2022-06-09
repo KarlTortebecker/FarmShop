@@ -1,25 +1,19 @@
 package org.casjedcem.FarmShop.web.adminController;
 
-import java.util.List;
-
+import org.casjedcem.FarmShop.web.model.Category;
+import org.casjedcem.FarmShop.web.model.Product;
 import org.casjedcem.FarmShop.web.repository.CategoryRepository;
 import org.casjedcem.FarmShop.web.repository.ClientRepository;
 import org.casjedcem.FarmShop.web.service.CategoryService;
+import org.casjedcem.FarmShop.web.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import org.casjedcem.FarmShop.web.model.Category;
-import org.casjedcem.FarmShop.web.model.Product;
-import org.casjedcem.FarmShop.web.service.ProductService;
+import java.util.List;
 
-@Controller
+@RestController
 public class AdminProductController {
 	
 	@Autowired
