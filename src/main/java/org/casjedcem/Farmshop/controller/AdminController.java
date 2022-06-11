@@ -86,6 +86,7 @@ public class AdminController {
     public String getProductsAdd(Model model){
         model.addAttribute("productDTO", new ProductDTO());
         model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("producers", producerService.getAllProducer());
         return "productsAdd";
     }
 
@@ -110,6 +111,7 @@ public class AdminController {
         product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
         product.setDescription(productDTO.getDescription());
         product.setCurrentPrice(productDTO.getCurrentPrice());
+        product.setProducer(producerService.getProducerById(productDTO.getProducerUserId()).get());
         product.setQuantity(productDTO.getQuantity());
         product.setImageName(imageUUID);
         productService.addProduct((product));
@@ -176,6 +178,7 @@ public class AdminController {
         producer.setUserName(producerDTO.getUserName());
         producer.setUserPassword(producerDTO.getUserPassword());
         producer.setUserPhone(producerDTO.getUserPhone());
+        producer.setUserEmail(producerDTO.getUserEmail());
         producer.setActive(true);
         producer.setImageName(imageUUID);
         producerService.addProducer((producer));
@@ -183,5 +186,28 @@ public class AdminController {
 
         return "redirect:/admin/producers";
 
+    }
+
+    @GetMapping("/admin/producer/delete/{id}")
+    public String deleteProducer(@PathVariable int id){
+        producerService.removeProducerById(id);
+        return "redirect:/admin/producers";
+    }
+
+    @GetMapping("/admin/producer/update/{id}")
+    public String updateProducer(@PathVariable int id, Model model){
+        Producer producer = producerService.getProducerById(id).get();
+        ProducerDTO producerDTO = new ProducerDTO();
+        producerDTO.setUserId((producer.getUserId()));
+        producerDTO.setUserName(producer.getUserName());
+        producerDTO.setUserPassword((producer.getUserPassword()));
+        producerDTO.setUserPhone(producer.getUserPhone());
+        producerDTO.setUserEmail(producer.getUserEmail());
+        producerDTO.setActive(true);
+        producerDTO.setImageName(producer.getImageName());
+
+        model.addAttribute("producerDTO", producerDTO);
+
+        return "producersAdd";
     }
 }

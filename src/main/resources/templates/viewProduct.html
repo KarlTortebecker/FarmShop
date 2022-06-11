@@ -55,15 +55,16 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-sm-5 d-flex justify-content-center">
-            <img class="mt-5" height="300px" width="300px" src="" th:src="@{${'/productImages/' + product.imageName}}"
-                 alt="">
+            <img class="mt-5" height="300px" width="300px" th:src="@{${'/images/productImages/' + product.imageName}}"
+                 th:alt="${product.name}">
         </div>
         <div class="col-sm-7 mt-5">
             <h2 th:text="${product.name}"></h2>
+            <h6 class="card-subtitle mb-2 text-muted" th:text="'Producer : '+${product.producer.userName}"></h6>
             <p th:text="${product.category.name}"></p>
-            <h2>₹ <span th:text="${product.price}"></span></h2>
-            <h5>Weight:
-                <spna th:text="${product.weight}"></spna> grams.
+            <h2>Fcfa <span th:text="${product.currentPrice}"></span></h2>
+            <h5>Remaining stock :
+                <span th:text="${product.quantity}"></span>
             </h5>
             <p th:text="${product.description}"></p>
             <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" class="btn btn-primary">Add to cart</a>

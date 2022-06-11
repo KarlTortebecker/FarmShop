@@ -47,9 +47,10 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name="category_id")
     private  Category category;
-//
-//    @ManyToOne(optional = false)
-//    private Producer producer;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name="producer_userid")
+    private Producer producer;
 
 
 //    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)

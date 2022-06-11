@@ -32,4 +32,7 @@ public class ProductService {
     public List<Product> getAllProductsByCategory(int id){
         return productRepository.findAllByCategory_Id(id);
     }
+    public List<Product> getAllProductsByProducer(int id){
+        return productRepository.findAllByProducerUserId(id);
+    }
 }

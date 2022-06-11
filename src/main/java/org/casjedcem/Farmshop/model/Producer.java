@@ -1,5 +1,6 @@
 package org.casjedcem.Farmshop.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -23,8 +24,8 @@ public class Producer extends User {
     private boolean isActive;
     private String imageName;
 
-//    @OneToMany(mappedBy = "producer")
-//    private List<Product> products;
+    @OneToMany(mappedBy = "producer")
+    private List<Product> products;
 
 
 }

@@ -8,6 +8,7 @@ public class ProducerDTO {
     private String userName;
     private String userPhone;
     private String userPassword;
+    private String userEmail;
     private String imageName;
     private boolean isActive;
 }

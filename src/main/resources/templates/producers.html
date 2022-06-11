@@ -39,13 +39,13 @@
 </nav>
 <div class="container-fluid">
 
-    <a th:href="@{/admin/producers/add}" style="marg in: 20px 0" class="btn btn-primary">Add Producer</a>
+    <a th:href="@{/admin/producers/add}" style="marge in: 20px 0" class="btn btn-primary">Add Producer</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">N°</th>
             <th scope="col">Producer Name</th>
-<!--            <th scope="col">Email</th>-->
+            <th scope="col">Email</th>
 <!--            <th scope="col">Address</th>-->
             <th scope="col">Preview</th>
             <th scope="col">Phone number</th>
@@ -59,8 +59,8 @@
         <tr th:each="producer, iStat : ${producers}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${producer.userName}">Larry</td>
-<!--            <td th:text="${producer.userEmail}">Larry</td>
-            <td th:text="${producer.userAddress}">Larry</td>-->
+            <td th:text="${producer.userEmail}">Larry</td>
+<!--            <td th:text="${producer.userAddress}">Larry</td>-->
             <td><img src="" height="100px" width="100px"  th:src="@{${'/images/producerImages/' + producer.imageName}}"></td>
             <td th:text="${producer.userPhone}">Larry</td>
             <td th:text="${producer.userPassword}">Larry</td>

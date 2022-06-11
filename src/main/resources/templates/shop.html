@@ -10,7 +10,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+    <title>La boutique  du paysan</title>
 </head>
 <body>
 
@@ -66,13 +67,14 @@
             <div class="card" style="margin-top: 20px" th:each="product : ${products}">
                 <div class="row no-gutters">
                     <div class="col-sm-5 d-flex justify-content-center">
-                        <img class="" height="150px" width="150px" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                        <img class="" height="150px" width="150px" th:src="@{${'/images/productImages/' + product.imageName}}" th:alt="${product.name}">
                     </div>
                     <div class="col-sm-7 d-flex justify-content-center">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.name}"></h5>
-                            <h4>₹ <span th:text="${product.price}"></span></h4>
-                            <p th:text="${product.description}" >Suresh Dasari is a founder and technical lead developer in tutlane.</p>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="'Producer : '+${product.producer.userName}"></h6>
+                            <h4>Fcfa <span th:text="${product.currentPrice}"></span></h4>
+                            <p th:text="${product.description}" >Ceci est la descrition du roduit</p>
                             <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>

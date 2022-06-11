@@ -7,7 +7,6 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
-
 @Data
     @MappedSuperclass
     public class User {
@@ -19,9 +18,9 @@ import javax.validation.constraints.Email;
         @Column(unique = true, nullable = false)
         private String userName;
 
-//        @Email
-//        @Column(nullable = false, unique = true, length = 50)
-//        private String userEmail;
+        @Email
+        @Column(nullable = false, unique = true, length = 50)
+        private String userEmail;
 
 //        @Embedded
 //        private Address userAddress;
