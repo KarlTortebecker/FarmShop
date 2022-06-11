@@ -45,23 +45,26 @@
         <tr>
             <th scope="col">N°</th>
             <th scope="col">Producer Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Address</th>
+<!--            <th scope="col">Email</th>-->
+<!--            <th scope="col">Address</th>-->
             <th scope="col">Preview</th>
             <th scope="col">Phone number</th>
             <th scope="col">Password</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
         </tr>
         </thead>
         <tbody>
-iz&a
+
         <tr th:each="producer, iStat : ${producers}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${producer.userName}">Larry</td>
 <!--            <td th:text="${producer.userEmail}">Larry</td>
             <td th:text="${producer.userAddress}">Larry</td>-->
+            <td><img src="" height="100px" width="100px"  th:src="@{${'/images/producerImages/' + producer.imageName}}"></td>
             <td th:text="${producer.userPhone}">Larry</td>
             <td th:text="${producer.userPassword}">Larry</td>
-<!--            <td><img src="" height="100px" width="100px"  th:src="@{${'/images/productImages/' + product.imageName}}"></td>-->
+
 
             <td><a href="" th:href="@{/admin/producer/delete/{id}(id=${producer.userId})}" class="btn btn-danger">Delete</a></td>
             <td><a href="" th:href="@{/admin/producer/update/{id}(id=${producer.userId})}" class="btn btn-warning">Update</a></td>

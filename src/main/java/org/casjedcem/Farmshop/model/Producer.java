@@ -21,6 +21,7 @@ import lombok.ToString;
 public class Producer extends User {
 
     private boolean isActive;
+    private String imageName;
 
 //    @OneToMany(mappedBy = "producer")
 //    private List<Product> products;

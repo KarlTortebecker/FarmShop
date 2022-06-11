@@ -18,7 +18,7 @@ public class ProducerService {
     }
 
     public void addProducer(Producer producer) {
-        producerRepository.save(producer);
+        producerRepository.saveAndFlush(producer);
     }
 
     public void removeProducerById(int id) {

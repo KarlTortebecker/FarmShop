@@ -1,5 +1,6 @@
 package org.casjedcem.Farmshop.controller;
 
+import org.casjedcem.Farmshop.dto.ProducerDTO;
 import org.casjedcem.Farmshop.dto.ProductDTO;
 import org.casjedcem.Farmshop.model.Category;
 import org.casjedcem.Farmshop.model.Producer;
@@ -22,7 +23,8 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-    public static String uploadDir = System.getProperty("user.dir")+"/src/main/resources/static/images/productImages/";
+    public static String uploadDir1 = System.getProperty("user.dir")+"/src/main/resources/static/images/productImages/";
+    public static String uploadDir2 = System.getProperty("user.dir")+"/src/main/resources/static/images/producerImages/";
 
     //Category section
 
@@ -95,7 +97,7 @@ public class AdminController {
         String imageUUID;
         if(!file.isEmpty()){
             imageUUID = file.getOriginalFilename();
-            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+            Path fileNameAndPath = Paths.get(uploadDir1, imageUUID);
             System.out.print(fileNameAndPath);
             Files.write(fileNameAndPath, file.getBytes());
 
@@ -111,7 +113,6 @@ public class AdminController {
         product.setQuantity(productDTO.getQuantity());
         product.setImageName(imageUUID);
         productService.addProduct((product));
-        System.out.print("yo");
 
         return "redirect:/admin/products";
 
@@ -151,13 +152,36 @@ public class AdminController {
 
     @GetMapping("/admin/producers/add")
     public String getProducerAdd(Model model){
-        model.addAttribute("producer", new Producer());
+        model.addAttribute("producerDTO", new ProducerDTO());
         return "producersAdd";
     }
 
     @PostMapping("/admin/producers/add")
-    public String postProducerAdd(@ModelAttribute("producer") Producer producer){
-        producerService.addProducer(producer);
+    public String postProducerAdd(@ModelAttribute("producerDTO")ProducerDTO producerDTO,
+                                 @RequestParam("producerImage")MultipartFile file,
+                                 @RequestParam("imgName")String imgName) throws IOException {
+
+        String imageUUID;
+        if(!file.isEmpty()){
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath = Paths.get(uploadDir2, imageUUID);
+            System.out.print(fileNameAndPath);
+            Files.write(fileNameAndPath, file.getBytes());
+
+        }else {
+            imageUUID = imgName;
+        }
+        Producer producer = new Producer();
+        producer.setUserId(producerDTO.getUserId());
+        producer.setUserName(producerDTO.getUserName());
+        producer.setUserPassword(producerDTO.getUserPassword());
+        producer.setUserPhone(producerDTO.getUserPhone());
+        producer.setActive(true);
+        producer.setImageName(imageUUID);
+        producerService.addProducer((producer));
+        System.out.print("yo");
+
         return "redirect:/admin/producers";
+
     }
 }
