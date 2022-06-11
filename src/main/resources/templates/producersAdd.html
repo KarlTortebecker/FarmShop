@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-    <title>Add a product</title>
+    <title>Add a producer</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,53 +41,46 @@
 </nav>
 <div class="container">
     <h3>Add a new Product</h3>
-    <form th:action="@{/admin/products/add}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+    <form th:action="@{/admin/producers/add}" method="post" th:object="${producer}">
         <div class="row">
-            <div class="col-sm-5">
+            <div class="col-sm-7">
 
-                <input type="hidden" name="id" th:field="*{id}">
+                <input type="hidden" name="id" th:field="*{userId}">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
-                           placeholder="Enter name">
+                    <label for="userName">Name</label>
+                    <input type="text" class="form-control" required th:field="*{userName}" name="userName" id="userName"
+                           placeholder="Enter the name of the product">
+
+                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="userEmail">Email</label>-->
+<!--                    <input type="Email" class="form-control" required th:field="*{userEmail}" name="userName" id="userEmail"-->
+<!--                           placeholder="Enter the Email of the producer">-->
+
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="userPhone">Phone number "***-***-***"</label>
+                    <input type="tel" class="form-control" required th:field="*{userPhone}" name="userPhone" id="userPhone"
+                           placeholder="Phone number" pattern ="[0-9]{3}-[0-9]{3}-[0-9]{3}">
 
                 </div>
                 <div class="form-group">
-                    <label for="category">Select Category</label>
-                    <select class="form-control" th:field="*{categoryId}" id="category" name="category">
-                        <option th:each="category :${categories}"
-                                th:value="${category.id}"
-                                th:text="${category.name}"
-                        >
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="currentPrice">Price</label>
-                    <input type="number" class="form-control" required th:field="*{currentPrice}" name="price" id="currentPrice"
-                           placeholder="Price">
-                </div>
-                <div class="form-group">
-                    <label for="quantity">The quantity of the product</label>
-                    <input type="number" class="form-control" required th:field="*{quantity}" name="quantity" id="quantity"
-                           placeholder="stock">
-                </div>
-                <div class="form-group">
-                    <label for="description">Product Description</label>
-                    <textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description"></textarea>
-                </div>
-            </div>
-            <div class="col-sm-5">
-                <p>Product Image</p>
-                <div class="custom-file">
-                    <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
-                    <label class="custom-file-label" for="productImage">Choose file</label>
+                    <label for="userPassword">Password</label>
+                    <input type="password" class="form-control" required th:field="*{userPassword}" name="userPassword" id="userPassword"
+                           placeholder="The Password">
                 </div>
 
-                <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/images/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
+<!--                <p>Product Image</p>-->
+<!--                <div class="custom-file">-->
+<!--                    <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>-->
+<!--                    <label class="custom-file-label" for="productImage">Choose file</label>-->
+<!--                </div>-->
 
-                <div class="form-group">
-                    <input type="hidden" th:value="${productDTO.imageName}" id="imgName" name="imgName">
-                </div>
+<!--                <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/images/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">-->
+
+<!--                <div class="form-group">-->
+<!--                    <input type="hidden" th:value="${productDTO.imageName}" id="imgName" name="imgName">-->
+<!--                </div>-->
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

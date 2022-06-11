@@ -1,6 +1,6 @@
 package org.casjedcem.Farmshop.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 
 @Data
@@ -23,7 +22,6 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true, nullable = false)
     private String name;
 
 
@@ -49,13 +47,13 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name="category_id")
     private  Category category;
+//
+//    @ManyToOne(optional = false)
+//    private Producer producer;
 
-    @ManyToOne(optional = false)
-    private Producer producer;
 
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Coupon discounts;
+//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    private Coupon discounts;
 
 
 /*

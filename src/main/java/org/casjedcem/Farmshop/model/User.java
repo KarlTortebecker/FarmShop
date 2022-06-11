@@ -19,12 +19,12 @@ import javax.validation.constraints.Email;
         @Column(unique = true, nullable = false)
         private String userName;
 
-        @Email
-        @Column(nullable = false, unique = true, length = 50)
-        private String userEmail;
+//        @Email
+//        @Column(nullable = false, unique = true, length = 50)
+//        private String userEmail;
 
-        @Embedded
-        private Address userAddress;
+//        @Embedded
+//        private Address userAddress;
 
         private String userPhone;
 

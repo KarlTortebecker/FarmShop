@@ -22,8 +22,8 @@ public class Producer extends User {
 
     private boolean isActive;
 
-    @OneToMany(mappedBy = "producer")
-    private Set<Product> products;
+//    @OneToMany(mappedBy = "producer")
+//    private List<Product> products;
 
 
 }

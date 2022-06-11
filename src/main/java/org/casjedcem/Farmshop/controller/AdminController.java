@@ -2,8 +2,10 @@ package org.casjedcem.Farmshop.controller;
 
 import org.casjedcem.Farmshop.dto.ProductDTO;
 import org.casjedcem.Farmshop.model.Category;
+import org.casjedcem.Farmshop.model.Producer;
 import org.casjedcem.Farmshop.model.Product;
 import org.casjedcem.Farmshop.service.CategoryService;
+import org.casjedcem.Farmshop.service.ProducerService;
 import org.casjedcem.Farmshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,7 @@ import java.util.Optional;
 @Controller
 public class AdminController {
 
-    public static String uploadDir = System.getProperty("user.dir")+"/src/main/resources/static/productImages";
+    public static String uploadDir = System.getProperty("user.dir")+"/src/main/resources/static/images/productImages/";
 
     //Category section
 
@@ -29,6 +31,10 @@ public class AdminController {
 
     @Autowired
     ProductService productService;
+
+    @Autowired
+    ProducerService producerService;
+
     @GetMapping("/admin")
     public String adminHome() {
         return "adminHome";
@@ -85,6 +91,17 @@ public class AdminController {
     public String postProductAdd(@ModelAttribute("productDTO")ProductDTO productDTO,
                                  @RequestParam("productImage")MultipartFile file,
                                  @RequestParam("imgName")String imgName) throws IOException {
+
+        String imageUUID;
+        if(!file.isEmpty()){
+            imageUUID = file.getOriginalFilename();
+            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+            System.out.print(fileNameAndPath);
+            Files.write(fileNameAndPath, file.getBytes());
+
+        }else {
+            imageUUID = imgName;
+        }
         Product product = new Product();
         product.setId(productDTO.getId());
         product.setName(productDTO.getName());
@@ -92,20 +109,55 @@ public class AdminController {
         product.setDescription(productDTO.getDescription());
         product.setCurrentPrice(productDTO.getCurrentPrice());
         product.setQuantity(productDTO.getQuantity());
-        String imageUUID;
-        if(!file.isEmpty()){
-            imageUUID = file.getOriginalFilename();
-            System.out.print("yoba");
-            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
-            Files.write(fileNameAndPath, file.getBytes());
-        }else {
-            imageUUID = imgName;
-        }
         product.setImageName(imageUUID);
         productService.addProduct((product));
         System.out.print("yo");
 
         return "redirect:/admin/products";
 
+    }
+
+    @GetMapping("/admin/product/delete/{id}")
+    public String deleteProduct(@PathVariable Long id){
+        productService.removeProductById(id);
+        return "redirect:/admin/products";
+    }
+
+    @GetMapping("/admin/product/update/{id}")
+    public String updateProduct(@PathVariable Long id, Model model){
+        Product product = productService.getProductById(id).get();
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setCategoryId((product.getCategory().getId()));
+        productDTO.setCurrentPrice(product.getCurrentPrice());
+        productDTO.setQuantity(product.getQuantity());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setImageName(product.getImageName());
+
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("productDTO", productDTO);
+
+        return "productsAdd";
+    }
+
+    //Producer section
+
+    @GetMapping("/admin/producers")
+    public String getProducers(Model model){
+        model.addAttribute("producers", producerService.getAllProducer());
+        return "producers";
+    }
+
+    @GetMapping("/admin/producers/add")
+    public String getProducerAdd(Model model){
+        model.addAttribute("producer", new Producer());
+        return "producersAdd";
+    }
+
+    @PostMapping("/admin/producers/add")
+    public String postProducerAdd(@ModelAttribute("producer") Producer producer){
+        producerService.addProducer(producer);
+        return "redirect:/admin/producers";
     }
 }

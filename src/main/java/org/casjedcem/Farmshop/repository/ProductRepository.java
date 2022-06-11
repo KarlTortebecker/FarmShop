@@ -25,9 +25,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     public List<Product> findAllByCategory_Id(int id);
     public List<Product> findAllByCategoryAndNameLike(Category category, String name);
     public List<Product> findByNameContains(@Param("name") String name);
-    public List<Product> findByProducerAndCategory(Producer producer, Category category);
-    public List<Product> findByProducerAndIsAvailableIsTrue(Producer v);
-    public List<Product> findByProducerAndInPromotionIsTrue(Producer v);
+//    public List<Product> findByProducerAndCategory(Producer producer, Category category);
+//    public List<Product> findByProducerAndIsAvailableIsTrue(Producer v);
+//    public List<Product> findByProducerAndInPromotionIsTrue(Producer v);
     public List<Product> findByInPromotionIsTrue();
 
     public List<Product> findByIsAvailableIsTrue();

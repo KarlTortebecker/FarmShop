@@ -11,8 +11,8 @@ public class ProductDTO {
     private String imageName;
     private int quantity;
     private int categoryId;
-    private int producerId;
-    private int couponId;
+    //private int producerId;
+   // private int couponId;
 
 
 }

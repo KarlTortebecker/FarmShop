@@ -18,7 +18,7 @@ public class ProductService {
         return productRepository.findAll();
     }
     public void addProduct(Product product){
-        productRepository.save(product);
+        productRepository.saveAndFlush(product);
     }
 
     public void removeProductById(Long id){

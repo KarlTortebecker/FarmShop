@@ -6,6 +6,7 @@ package org.casjedcem.Farmshop.model;
         import javax.persistence.*;
         import java.io.Serializable;
         import java.util.Collection;
+        import java.util.List;
 
 @Data
 @Entity
@@ -25,24 +26,10 @@ public class Category {
 
     @Column(nullable = false)
     private String description;
-    /*
-    private String image;
 
     @OneToMany(mappedBy = "category")
-    private Collection<Product> products;
+    private List<Product> products;
 
-
-    public Category(String name, String thumbnails, String description, Collection<Product> products) {
-        super();
-        this.name = name;
-        this.image = thumbnails;
-        this.description = description;
-        this.products = products;
-    }
-
-
-
-*/
 
 
 
