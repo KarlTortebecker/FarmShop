@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and()
                 .oauth2Login()
-                .loginPage("'login")
+                .loginPage("/login")
                 .successHandler(googleOAuth2SuccessHandler)
                 .and()
                 .logout()
