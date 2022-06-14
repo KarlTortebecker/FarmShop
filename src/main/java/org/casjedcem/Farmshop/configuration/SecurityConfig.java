@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/shop/**", "/forgotpassword", "/register", "h2-console/**").permitAll()
+                .antMatchers("/", "/shop/**", "/register", "/h2-console/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .failureUrl("/login?error = true")
+                .failureUrl("/login?error= true")
                 .defaultSuccessUrl("/")
                 .usernameParameter("email")
                 .passwordParameter("password")
@@ -68,6 +68,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/productImages/**","/producerImages/**", "/css/**", "/js/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/js/**", "/plugins/**","/styles/**","/OwlCarousel2-2.2.1/**","/bootstrap4/**", "/images/icons/**", "/images/**", "/productImages/**","/producerImages/**", "/css/**", "/js/**");
     }
 }

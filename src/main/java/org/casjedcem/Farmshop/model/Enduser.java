@@ -29,7 +29,7 @@ public class Enduser {
     @Email(message = "{errors.invalid_email}")
     private String email;
 
-    @NotEmpty
+
     private String password;
 
     public Enduser(Enduser enduser) {

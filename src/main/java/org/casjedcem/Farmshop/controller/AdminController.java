@@ -6,6 +6,7 @@ import org.casjedcem.Farmshop.model.Category;
 import org.casjedcem.Farmshop.model.Producer;
 import org.casjedcem.Farmshop.model.Product;
 import org.casjedcem.Farmshop.service.CategoryService;
+import org.casjedcem.Farmshop.service.EnduserService;
 import org.casjedcem.Farmshop.service.ProducerService;
 import org.casjedcem.Farmshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class AdminController {
 
     @Autowired
     ProducerService producerService;
+
+    @Autowired
+    EnduserService enduserService;
 
     @GetMapping("/admin")
     public String adminHome() {
@@ -210,4 +214,35 @@ public class AdminController {
 
         return "producersAdd";
     }
+
+    //Endusers section
+
+    @GetMapping("/admin/endusers")
+    public String getEndusers(Model model){
+        model.addAttribute("endusers", enduserService.getAllEnduser());
+        return "endusers";
+    }
+
+    @GetMapping("/admin/enduser/delete/{id}")
+    public String deleteEnduser(@PathVariable Long id){
+        enduserService.removeEnduserById(id);
+        return "redirect:/admin/endusers";
+    }
+//
+//    @GetMapping("/admin/enduser/update/{id}")
+//    public String updateEnduser(@PathVariable int id, Model model){
+//        Producer producer = producerService.getProducerById(id).get();
+//        ProducerDTO producerDTO = new ProducerDTO();
+//        producerDTO.setUserId((producer.getUserId()));
+//        producerDTO.setUserName(producer.getUserName());
+//        producerDTO.setUserPassword((producer.getUserPassword()));
+//        producerDTO.setUserPhone(producer.getUserPhone());
+//        producerDTO.setUserEmail(producer.getUserEmail());
+//        producerDTO.setActive(true);
+//        producerDTO.setImageName(producer.getImageName());
+//
+//        model.addAttribute("producerDTO", producerDTO);
+//
+//        return "producersAdd";
+//    }
 }
